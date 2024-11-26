@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int dias;
+    printf("Quantos dias deseja analisar? ");
+    scanf("%d", &dias);
+
+    float precos[dias], soma = 0, media, variancia = 0, desvioPadrao;
+    for (int i = 0; i < dias; i++) {
+        printf("Insira o preço da ação no dia %d: ", i + 1);
+        scanf("%f", &precos[i]);
+        soma += precos[i];
+    }
+
+    media = soma / dias;
+
+    for (int i = 0; i < dias; i++) {
+        variancia += pow(precos[i] - media, 2);
+    }
+
+    variancia /= dias;
+    desvioPadrao = sqrt(variancia);
+
+    printf("Média dos preços: %.2f\n", media);
+    printf("Desvio padrão: %.2f\n", desvioPadrao);
+
+    if (desvioPadrao < 0.05 * media) {
+        printf("Desempenho das ações: Estável\n");
+    } else {
+        printf("Desempenho das ações: Volátil\n");
+    }
+
+    return 0;
+}
