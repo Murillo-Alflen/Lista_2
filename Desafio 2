@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <string.h>
+
+void controleMovimento() {
+    char comando[10];
+    printf("Controle de Movimento iniciado. Digite os comandos (frente, tras, sair): ");
+    do {
+        scanf("%s", comando);
+    } while (strcmp(comando, "sair") != 0);
+}
+
+void leituraSensores() {
+    float distancia;
+    printf("Leitura de sensores iniciada. Insira a distância registrada: ");
+    do {
+        scanf("%f", &distancia);
+    } while (distancia >= 10);
+}
+
+void controleAtuacao() {
+    int opcao;
+    printf("Controle de Atuação iniciado. Escolha uma ação:\n");
+    do {
+        printf("1 - Ligar lâmpada\n");
+        printf("2 - Tocar som\n");
+        printf("3 - Mover braço\n");
+        printf("0 - Encerrar\n");
+        scanf("%d", &opcao);
+    } while (opcao != 0);
+}
+
+void monitoramentoBateria() {
+    int bateria;
+    printf("Monitoramento de Bateria iniciado. Insira o nível da bateria: ");
+    do {
+        scanf("%d", &bateria);
+        if (bateria < 20) printf("Bateria baixa!\n");
+    } while (bateria < 20);
+}
+
+void navegacaoAutonoma() {
+    char comando[10];
+    int x = 0, y = 0;
+    printf("Navegação Autônoma iniciada. Digite comandos (cima, baixo, sair): ");
+    do {
+        scanf("%s", comando);
+        if (strcmp(comando, "cima") == 0) y++;
+        else if (strcmp(comando, "baixo") == 0) y--;
+    } while (strcmp(comando, "sair") != 0);
+    printf("Posição final: (%d, %d)\n", x, y);
+}
+
+int main() {
+    int opcao;
+    do {
+        printf("Menu Principal:\n");
+        printf("1 - Controle de Movimento\n");
+        printf("2 - Leitura de Sensores\n");
+        printf("3 - Controle de Atuação\n");
+        printf("4 - Monitoramento de Bateria\n");
+        printf("5 - Navegação Autônoma\n");
+        printf("0 - Sair\n");
+        scanf("%d", &opcao);
+        switch (opcao) {
+            case 1: controleMovimento(); break;
+            case 2: leituraSensores(); break;
+            case 3: controleAtuacao(); break;
+            case 4: monitoramentoBateria(); break;
+            case 5: navegacaoAutonoma(); break;
+        }
+    } while (opcao != 0);
+    return 0;
+}
