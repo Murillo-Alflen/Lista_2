@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char comando[10];
+    int x = 0, y = 0;
+    do {
+        printf("Digite o comando (cima, baixo, esquerda, direita ou sair): ");
+        scanf("%s", comando);
+        if (strcmp(comando, "cima") == 0) y++;
+        else if (strcmp(comando, "baixo") == 0) y--;
+        else if (strcmp(comando, "esquerda") == 0) x--;
+        else if (strcmp(comando, "direita") == 0) x++;
+    } while (strcmp(comando, "sair") != 0);
+    printf("Posição final do robô: (%d, %d)\n", x, y);
+    return 0;
+}
