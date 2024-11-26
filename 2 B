@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int main() {
+    float distancia;
+    do {
+        printf("Insira a distância registrada (cm): ");
+        scanf("%f", &distancia);
+    } while (distancia >= 10);
+    printf("Distância menor que 10 cm detectada. Programa encerrado.\n");
+    return 0;
+}
